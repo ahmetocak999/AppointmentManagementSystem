@@ -15,7 +15,7 @@ import java.time.LocalTime;
 public class AvailabilityDTO {
     private int id;
 
-    private int doctorId;
+    private Integer doctorId;
 
     private LocalDate date;
 

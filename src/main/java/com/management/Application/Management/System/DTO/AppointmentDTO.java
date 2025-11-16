@@ -16,9 +16,9 @@ import java.time.LocalTime;
 public class AppointmentDTO{
     private int id;
 
-    private int doctorId;
+    private Integer doctorId;
 
-    private int patientId;
+    private Integer patientId;
 
     private LocalDate date;
 

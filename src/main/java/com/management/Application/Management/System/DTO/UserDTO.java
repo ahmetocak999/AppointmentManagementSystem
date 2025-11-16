@@ -1,5 +1,6 @@
 package com.management.Application.Management.System.DTO;
 
+import com.management.Application.Management.System.Entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +20,9 @@ public class UserDTO {
 
     private String password;
 
-    private String role;
+    private Role role;
 
-    private int departmentId;
+    private Integer departmentId;
 
     private String phone;
 

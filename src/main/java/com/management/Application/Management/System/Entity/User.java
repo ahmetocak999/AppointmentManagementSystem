@@ -25,7 +25,6 @@ public class User {
 
     private String password;
 
-    @Enumerated(EnumType.STRING)
     private Role role;
 
     @ManyToOne
@@ -35,5 +34,7 @@ public class User {
     private String phone;
 
     private String location;
+
+    private boolean active = true;
 
 }
