@@ -134,16 +134,21 @@ public class UserService {
 
         return userMapper.toDTO(updated);
     }
+
     public List<UserDTO> getAllUsers(){
 
         return userRepo.findAll()
                 .stream().map(userMapper::toDTO)
                 .toList();
     }
+
     public UserDTO getByEmail(String email){
-        return userRepo.findByEmail(email)
-                .orElseThrow(() -> new UserNotFoundException("This email is not found: " + email);
+        User user = userRepo.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("This email is not found: " + email));
+
+        return userMapper.toDTO(user);
     }
+
     public void deactivateUser(int id){
         User user = validateUserExists(id);
 
@@ -153,6 +158,7 @@ public class UserService {
         user.setActive(false);
         userRepo.save(user);
     }
+
     public List<UserDTO> getActiveUsers(){
         return userRepo.findByActive(true)
                 .stream()
