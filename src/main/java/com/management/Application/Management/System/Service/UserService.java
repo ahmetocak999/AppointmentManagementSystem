@@ -110,10 +110,11 @@ public class UserService {
 
         return userMapper.toDTO(savedUser);
     }
-    public UserDTO getUserById(int id) {
-        User user = validateUserExists(id);
-        return userMapper.toDTO(user);
+    public User getUserById(int id) {
+        return userRepo.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found: " + id));
     }
+
     public UserDTO updateUser(int id, UserDTO dto) {
 
         User user = validateUserExists(id);
