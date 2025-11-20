@@ -113,7 +113,6 @@ public class AvailabilityService {
             boolean startsBeforeOrAtStart =
                     !availability.getStartTime().isAfter(startTime);
 
-
             boolean endsAfterOrAtEnd =
                     !availability.getEndTime().isBefore(endTime);
 
