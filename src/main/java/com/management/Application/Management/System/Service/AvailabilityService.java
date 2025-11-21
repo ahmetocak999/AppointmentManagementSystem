@@ -6,7 +6,7 @@ import com.management.Application.Management.System.Entity.Availability;
 import com.management.Application.Management.System.Entity.AvailabilityStatus;
 import com.management.Application.Management.System.Entity.User;
 import com.management.Application.Management.System.Exception.AvailabilityConflictException;
-import com.management.Application.Management.System.Exception.AvailabilityNotFound;
+import com.management.Application.Management.System.Exception.AvailabilityNotFoundException;
 import com.management.Application.Management.System.Exception.InvalidTimeRangeException;
 import com.management.Application.Management.System.Mapper.AvailabilityMapper;
 import com.management.Application.Management.System.Repo.AvailabilityRepo;
@@ -32,7 +32,7 @@ public class AvailabilityService {
     public Availability validateAvailability(int id){
         Optional<Availability> optionalAvailability = availabilityRepo.findById(id);
         if(optionalAvailability.isEmpty()){
-            throw new AvailabilityNotFound("Availability Not Found:" + id);
+            throw new AvailabilityNotFoundException("Availability Not Found:" + id);
         }
         return optionalAvailability.get();
     }
@@ -52,7 +52,7 @@ public class AvailabilityService {
 
             if(startsBeforeNewEnd && endsAfterNewStart){
                 throw new AvailabilityConflictException("Doctor already has an availability between "
-                + a.getStartTime() + "and" + a.getEndTime() + "on date " + date);
+                + a.getStartTime() + "and" + a.getEndTime() + "on date" + date);
             }
 
         }
@@ -122,5 +122,6 @@ public class AvailabilityService {
         }
         return AvailabilityStatus.UNAVAILABLE;
     }
+
 }
 

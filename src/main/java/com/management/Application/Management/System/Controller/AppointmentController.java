@@ -38,6 +38,11 @@ public class AppointmentController {
         List<AppointmentDTO> dto = appointmentService.getByPatientId(patientId);
         return ResponseEntity.ok(dto);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById(@PathVariable int id){
+        AppointmentDTO deleteById = appointmentService.deleteById(id);
+        return ResponseEntity.ok("The appointment deleted.");
+    }
 
 
 }

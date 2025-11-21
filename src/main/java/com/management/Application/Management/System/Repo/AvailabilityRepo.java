@@ -13,4 +13,6 @@ public interface AvailabilityRepo extends JpaRepository<Availability,Integer> {
     List<Availability> findByDoctorIdAndDate(int doctorId, LocalDate date);
 
     List<Availability> findByDoctorId();
+
+    List<Availability> findByPatientIdAndDate(int patientId, LocalDate date);
 }
